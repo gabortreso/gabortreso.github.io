@@ -1,3 +1,4 @@
+let currentPhoto = 0;
 
 let imageOne = {
     photo: 'images/image1.jpg',
@@ -43,8 +44,6 @@ let imageSix = {
 
 let imagesData = [imageOne, imageTwo, imageThree, imageFour, imageFive, imageSix]
 
-let currentPhoto = 0;
-
 $('#forward-button').click(() => {
     if(currentPhoto < 5) {
         currentPhoto++;
@@ -84,6 +83,15 @@ let loadPhoto = (photoNumber) => {
     $('.thumbnail-frame').not(`:eq(${photoNumber})`).css({"width":"80px", "height":"100px"});
     $('.thumbnail').eq(photoNumber).css({"width":"100px", "height":"130px"});
     $('.thumbnail').not(`:eq(${photoNumber})`).css({"width":"80px", "height":"100px"});  
-    }
+    };
 
 loadPhoto(currentPhoto);
+
+/*
+$(window).bind('orientationchange', function (event) {
+    var savePhoto = currentPhoto;
+    location.reload(true);
+    currentPhoto = savePhoto;
+    loadPhoto(currentPhoto);
+});
+*/
